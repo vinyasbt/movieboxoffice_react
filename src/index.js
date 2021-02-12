@@ -1,3 +1,4 @@
+//left with episode and cast functionality(implemented logic getting output in console)
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';

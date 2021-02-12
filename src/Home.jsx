@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {  Link, BrowserRouter as Router } from 'react-router-dom';
 //about and navigation are pending
 class Home extends React.Component{
     constructor(props)
@@ -63,6 +64,7 @@ class Home extends React.Component{
     render(){
         return(
             <div>
+                <Router>
                 {/* navbar */}
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
   <a class="navbar-brand" href="/">MovieBoxOffice</a>
@@ -77,26 +79,31 @@ class Home extends React.Component{
   </div>
 </nav>
 {/* displays populat shows and when user search particular show it disappear */}
+
                 {this.state.render&&<div>{this.state.popular.map((movie)=>
+                <Link to ={`/about/${movie.id}`}>
                 <div style={this.grid}>
                     <h4>Name:{movie.name}</h4>
                     <img src={movie.image.medium}  />
                     <h3>Language:{movie.language}</h3>
                     <h3>Average:{movie.rating.average}</h3>
                     </div>
+                    </Link>
                 )
                 }</div>}
                 {/* displays search shows */}
                 {this.state.searchshows.map((show)=>
+                <Link to ={`/about/${show.show.id}`}>
                 <div style={this.grid}>
                     <h4>{ show.show.name }</h4>
                    {show.show.image !=null && <img src={show.show.image.medium}  />}
                     <h3>Language:{show.show.language}</h3>
                     <h3>Rating:{show.show.status}</h3>
                     </div>
+                    </Link>
                 )
                 }
-
+</Router>
                 </div>
             
         )
